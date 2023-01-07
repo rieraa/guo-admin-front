@@ -9,9 +9,9 @@ class LoginStore {
         makeAutoObservable(this)
     }
     // 登录
-    getToken = async ({ account, password }) => {
-        const res = await http.post('/api/login', {
-            account,
+    getToken = async ({ username, password }) => {
+        const res = await http.post('/api/auth/login', {
+            username,
             password
         })
         console.log(res)
