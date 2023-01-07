@@ -33,9 +33,9 @@ function App() {
                                 <LayoutPc/>
                             </AuthRoute>
                         }>
-                            <Route index element={
+                            <Route path="resourceAdmin" element={
                                 <AuthResourceAdmin>
-                                    <StudentHome/>
+                                    <TeacherList></TeacherList>
                                 </AuthResourceAdmin>
                             }/>
                             <Route path="publish/:id" element={
@@ -92,7 +92,7 @@ function App() {
                                 </AuthSystemAdmin>
                             }/>
                         </Route>
-                        <Route path="/register" element={<Rejister/>}/>
+
                         <Route path='/login' element={<Login/>}/>
                     </Routes>
                 </div>
