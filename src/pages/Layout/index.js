@@ -21,7 +21,7 @@ const LayoutPc = () => {
     const {userStore, loginStore} = useStore()
     // 区分角色变量
     // 0:会员 1：系统管理员 2：课程资料管理员 3 公司领导 4.冻结
-    let isTeacher = "2"
+    let isTeacher = "3"
     const navigate = useNavigate()
     const onLogout = () => {
         loginStore.loginOut()
