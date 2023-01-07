@@ -21,7 +21,7 @@ const LayoutPc = () => {
     const {userStore, loginStore} = useStore()
     // 区分角色变量
     // 0:会员 1：系统管理员 2：课程资料管理员 3 公司领导 4.冻结
-    let isTeacher = localStorage.getItem("role")
+    let isTeacher = "2"
     const navigate = useNavigate()
     const onLogout = () => {
         loginStore.loginOut()
@@ -55,16 +55,10 @@ const LayoutPc = () => {
                     defaultSelectedKeys={"teacher"}
                 >
                     <Menu.Item style={{marginTop: 0}} icon={<HomeOutlined/>} key="teacher">
-                        <Link to="/teacher">数据概览</Link>
+                        <Link to="/teacher">用户管理</Link>
                     </Menu.Item>
                     <Menu.Item icon={<DiffOutlined/>} key="tlist">
-                        <Link to="/teacher/list">完成情况</Link>
-                    </Menu.Item>
-                    <Menu.Item icon={<EditOutlined/>} key="tquestion">
-                        <Link to="/teacher/question">题目管理</Link>
-                    </Menu.Item>
-                    <Menu.Item icon={<FormOutlined/>} key="tclass">
-                        <Link to="/teacher/class">班级管理</Link>
+                        <Link to="/teacher/list">评论管理</Link>
                     </Menu.Item>
                 </Menu>
             )
@@ -79,14 +73,12 @@ const LayoutPc = () => {
                     defaultSelectedKeys={"student"}
                 >
                     <Menu.Item icon={<AlignLeftOutlined/>} key="student" style={{marginTop: 0}}>
-                        <Link to="/student">题库作业</Link>
+                        <Link to="/classOverview">课程概览</Link>
                     </Menu.Item>
-                    <Menu.Item icon={<AlignLeftOutlined/>} key="studentinfo">
-                        <Link to="/studentinfo">个人信息</Link>
+                    <Menu.Item icon={<AlignLeftOutlined/>} key="student" style={{marginTop: 0}}>
+                        <Link to="/classOverview">课程概览</Link>
                     </Menu.Item>
-                    <Menu.Item icon={<AlignLeftOutlined/>} key="studentinfo">
-                        <Link to="/studentinfo">个人信息</Link>
-                    </Menu.Item>
+
                 </Menu>
             )
         } else if (isTeacher === "3") {
@@ -100,10 +92,10 @@ const LayoutPc = () => {
                     defaultSelectedKeys={"teacher"}
                 >
                     <Menu.Item icon={<AlignLeftOutlined/>} key="student" style={{marginTop: 0}}>
-                        <Link to="/student">题库作业</Link>
+                        <Link to="/student">课程类型统计</Link>
                     </Menu.Item>
                     <Menu.Item icon={<AlignLeftOutlined/>} key="studentinfo">
-                        <Link to="/studentinfo">个人信息</Link>
+                        <Link to="/studentinfo">观看次数</Link>
                     </Menu.Item>
                 </Menu>
             )
