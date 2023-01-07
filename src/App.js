@@ -1,7 +1,7 @@
 import {Routes, Route} from 'react-router-dom'
 import LayoutPc from '@/pages/Layout'
 import Login from '@/pages/Login'
-import {AuthRoute, AuthTeacher, AuthStudent} from './components/Auth'
+import {AuthRoute, AuthSystemAdmin, AuthResourceAdmin} from './components/Auth'
 import TeacherHome from './pages/TeacherHome'
 import Publish from './pages/StudentHomework'
 import StudentHome from './pages/StudentHome'
@@ -34,62 +34,62 @@ function App() {
                             </AuthRoute>
                         }>
                             <Route index element={
-                                <AuthStudent>
+                                <AuthResourceAdmin>
                                     <StudentHome/>
-                                </AuthStudent>
+                                </AuthResourceAdmin>
                             }/>
                             <Route path="publish/:id" element={
-                                <AuthStudent>
+                                <AuthResourceAdmin>
                                     <Publish/>
-                                </AuthStudent>
+                                </AuthResourceAdmin>
                             }/>
                             <Route path="student" element={
-                                <AuthStudent>
+                                <AuthResourceAdmin>
                                     <StudentHome/>
-                                </AuthStudent>
+                                </AuthResourceAdmin>
                             }
                             />
                             <Route path="studentinfo" element={
-                                <AuthStudent>
+                                <AuthResourceAdmin>
                                     <StudentInfo/>
-                                </AuthStudent>
+                                </AuthResourceAdmin>
                             }/>
                             <Route path="teacher" element={
-                                <AuthTeacher>
+                                <AuthSystemAdmin>
                                     <TeacherHome/>
-                                </AuthTeacher>
+                                </AuthSystemAdmin>
                             }/>
                             <Route path="teacher/list" element={
-                                <AuthTeacher>
+                                <AuthSystemAdmin>
                                     <TeacherList/>
-                                </AuthTeacher>
+                                </AuthSystemAdmin>
                             }/>
                             <Route path="teacher/list/search" element={
-                                <AuthTeacher>
+                                <AuthSystemAdmin>
                                     <TeacherDetailList/>
-                                </AuthTeacher>
+                                </AuthSystemAdmin>
                             }></Route>
                             <Route path="teacher/list/search/review" element={
-                                <AuthTeacher>
+                                <AuthSystemAdmin>
                                     <TeacherReview/>
-                                </AuthTeacher>
+                                </AuthSystemAdmin>
                             }></Route>
                             <Route path='teacher/class' element={
-                                <AuthTeacher>
+                                <AuthSystemAdmin>
                                     <TeacherClass></TeacherClass>
-                                </AuthTeacher>
+                                </AuthSystemAdmin>
                             }>
                             </Route>
                             <Route path='teacher/question' element={
-                                <AuthTeacher>
+                                <AuthSystemAdmin>
                                     <TeacherQuestion/>
-                                </AuthTeacher>
+                                </AuthSystemAdmin>
                             }
                             ></Route>
                             <Route path="teacher/class/classinfo" element={
-                                <AuthTeacher>
+                                <AuthSystemAdmin>
                                     <TeacherClassInfo/>
-                                </AuthTeacher>
+                                </AuthSystemAdmin>
                             }/>
                         </Route>
                         <Route path="/register" element={<Rejister/>}/>

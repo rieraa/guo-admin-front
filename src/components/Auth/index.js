@@ -19,23 +19,31 @@ function AuthRoute({children}) {
 // 登录：<><Layout/></>
 // 非登录：<Navigate to="/login" replace />
 
-function AuthTeacher({children}) {
-
+//系统管理员
+function AuthSystemAdmin({children}) {
     // 是老师的话取消拦截，否则去首页
     if (localStorage.getItem("role") === '1') {
         return <>{children}</>
     } else {
-        return <Navigate to="/" replace/>
+        return <Navigate to="/systemAdmin" replace/>
     }
 }
 
-function AuthStudent({children}) {
+function AuthResourceAdmin({children}) {
     if (localStorage.getItem("role") === '2') {
         return <>{children}</>
     } else {
-        return <Navigate to="/teacher" replace/>
+        return <Navigate to="/resourceAdmin" replace/>
+    }
+}
+
+function AuthLeader({children}) {
+    if (localStorage.getItem("role") === '2') {
+        return <>{children}</>
+    } else {
+        return <Navigate to="/leader" replace/>
     }
 }
 
 
-export {AuthRoute, AuthTeacher, AuthStudent}
+export {AuthRoute, AuthSystemAdmin, AuthResourceAdmin}
