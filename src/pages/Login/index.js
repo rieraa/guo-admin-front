@@ -20,7 +20,7 @@ function Login () {
             // 0:会员 1：系统管理员 2：课程资料管理员 3 公司领导 4.冻结
             if (res.data.roleId === 1) {
                 localStorage.setItem("role", `${res.data.roleId}`)
-                navigate('/systemAdmin', { replace: true })
+                navigate('/userManage', { replace: true })
                 message.success("登录成功")
             } else if (res.data.roleId === 2) {
                 localStorage.setItem("role", `${res.data.roleId}`)

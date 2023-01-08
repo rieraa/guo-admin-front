@@ -53,13 +53,13 @@ const LayoutPc = () => {
                     selectedKeys={selectedKey}
                     style={{ height: '100%', borderRight: 0 }}
                     onClick={onClick}
-                    defaultSelectedKeys={"teacher"}
+                    defaultSelectedKeys={"userManage"}
                 >
-                    <Menu.Item style={{ marginTop: 0 }} icon={<HomeOutlined />} key="teacher">
-                        <Link to="/teacher">用户管理</Link>
+                    <Menu.Item style={{ marginTop: 0 }} icon={<HomeOutlined />} key="userManage">
+                        <Link to="/userManage">用户管理</Link>
                     </Menu.Item>
                     <Menu.Item icon={<DiffOutlined />} key="tlist">
-                        <Link to="/teacher/list">评论管理</Link>
+                        <Link to="/commentManage">评论管理</Link>
                     </Menu.Item>
                 </Menu>
             )
@@ -118,7 +118,7 @@ const LayoutPc = () => {
             </Header>
             <Layout>
                 <Sider width={200} className="site-layout-background">
-                    <Item roleId={'2'}></Item>
+                    <Item roleId={'1'}></Item>
                 </Sider>
                 <Layout className="layout-content" style={{ padding: 20 }}>
                     {/*嵌套路由*/}
