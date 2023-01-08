@@ -28,7 +28,7 @@ function Login () {
                 message.success("登录成功")
             } else if (res.data.roleId === 3) {
                 localStorage.setItem("role", `${res.data.roleId}`)
-                navigate('/leader"', { replace: true })
+                navigate('/leader', { replace: true })
                 message.success("登录成功")
             } else message.error('权限不足')
         } else {
