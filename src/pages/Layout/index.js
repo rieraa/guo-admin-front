@@ -21,7 +21,7 @@ const LayoutPc = () => {
     const {userStore, loginStore} = useStore()
     // 区分角色变量
     // 0:会员 1：系统管理员 2：课程资料管理员 3 公司领导 4.冻结
-    let isTeacher = "1"
+    let roleId = "2"
     const navigate = useNavigate()
     const onLogout = () => {
         loginStore.loginOut()
@@ -43,8 +43,8 @@ const LayoutPc = () => {
     // }, [userStore, loginStore, navigate])
 
 
-    function Item({isTeacher}) {
-        if (isTeacher === "1") {
+    function Item({roleId}) {
+        if (roleId === "1") {
             return (
                 <Menu
                     mode="inline"
@@ -62,7 +62,7 @@ const LayoutPc = () => {
                     </Menu.Item>
                 </Menu>
             )
-        } else if (isTeacher === "2") {
+        } else if (roleId === "2") {
             return (
                 <Menu
                     mode="inline"
@@ -79,7 +79,7 @@ const LayoutPc = () => {
 
                 </Menu>
             )
-        } else if (isTeacher === "3") {
+        } else if (roleId === "3") {
             return (
                 <Menu
                     mode="inline"
@@ -107,7 +107,7 @@ const LayoutPc = () => {
                 <div className="logo"/>
                 <div className="user-info">
                     <span
-                        className="user-name">{isTeacher ? userStore.userInfo.name : userStore.userInfo.nickname}</span>
+                        className="user-name">{roleId ? userStore.userInfo.name : userStore.userInfo.nickname}</span>
                     <span className="user-logout">
             <Popconfirm title="是否确认退出？" okText="退出" cancelText="取消" onConfirm={onLogout}>
               <LogoutOutlined/> 退出
@@ -117,11 +117,11 @@ const LayoutPc = () => {
             </Header>
             <Layout>
                 <Sider width={200} className="site-layout-background">
-                    <Item isTeacher={isTeacher}></Item>
+                    <Item roleId={roleId}></Item>
                 </Sider>
                 <Layout className="layout-content" style={{padding: 20}}>
-                    {/* 嵌套路由 */}
-                    {/*<Outlet></Outlet>*/}
+                     {/*嵌套路由*/}
+                    <Outlet></Outlet>
                 </Layout>
             </Layout>
         </Layout>

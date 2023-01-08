@@ -1,14 +1,15 @@
-import { Card, Button, Col, Row, message, Popconfirm, Breadcrumb, Input, Space, Modal } from "antd"
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from 'react-router-dom'
-import { observer } from "mobx-react-lite"
-import { useStore } from "@/store";
-const { Search } = Input;
+import {Card, Button, Col, Row, message, Popconfirm, Breadcrumb, Input, Space, Modal} from "antd"
+import {useEffect, useState} from "react";
+import {Link, useNavigate} from 'react-router-dom'
+import {observer} from "mobx-react-lite"
+import {useStore} from "@/store";
+
+const {Search} = Input;
 
 
 const TeacherClass = () => {
     const navigate = useNavigate()
-    const { classStore } = useStore()
+    const {classStore} = useStore()
     const [search, setSearch] = useState('')
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [cname, setCname] = useState('');
@@ -33,11 +34,12 @@ const TeacherClass = () => {
         setIsModalOpen(false);
     };
     useEffect(() => {
-        async function getClass () {
-            await classStore.getClass(search)
-        }
-        getClass()
-    }, [classStore, search])
+        // async function getClass() {
+        //     await classStore.getClass(search)
+        // }
+        //
+        // getClass()
+    }, [])
     return (
         <div className="class">
             <Modal title="新增班级❤️" visible={isModalOpen} onOk={handleOk} onCancel={handleCancel} forceRender={true} getContainer={false} zIndex={9999} >
@@ -101,6 +103,7 @@ const TeacherClass = () => {
 
             </div>
         </div>
+        // <>123</>
     )
 }
 

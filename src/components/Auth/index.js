@@ -29,16 +29,18 @@ function AuthSystemAdmin({children}) {
     }
 }
 
+//资料管理
 function AuthResourceAdmin({children}) {
-    if (localStorage.getItem("role") === '2') {
+    if (true) {
         return <>{children}</>
     } else {
         return <Navigate to="/resourceAdmin" replace/>
     }
 }
 
+//领导
 function AuthLeader({children}) {
-    if (localStorage.getItem("role") === '2') {
+    if (localStorage.getItem("role") === '3') {
         return <>{children}</>
     } else {
         return <Navigate to="/leader" replace/>
