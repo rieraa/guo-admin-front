@@ -1,8 +1,8 @@
 import { Routes, Route } from 'react-router-dom'
 import LayoutPc from '@/pages/Layout'
 import Login from '@/pages/Login'
-import { AuthRoute, AuthSystemAdmin, AuthResourceAdmin } from './components/Auth'
-import TeacherHome from './pages/TeacherHome'
+import { AuthRoute, AuthSystemAdmin, AuthResourceAdmin, AuthLeader } from './components/Auth'
+import LeaderrHome from './pages/LeaderHome'
 import Publish from './pages/StudentHomework'
 import StudentHome from './pages/StudentHome'
 import CourseList from './pages/CourseList'
@@ -19,6 +19,7 @@ import TeacherReview from './pages/TeacherReview'
 import TeacherClassInfo from './pages/TeacherClassInfo'
 import CommentManage from './pages/CommentManage'
 import UserManage from './pages/UserManage'
+
 
 
 function App () {
@@ -56,10 +57,10 @@ function App () {
                                     <UserManage></UserManage>
                                 </AuthResourceAdmin>
                             } />
-                            <Route path="teacher" element={
-                                <AuthSystemAdmin>
-                                    <TeacherHome />
-                                </AuthSystemAdmin>
+                            <Route path="leader" element={
+                                <AuthLeader>
+                                    <LeaderrHome />
+                                </AuthLeader>
                             } />
                             <Route path="teacher/list" element={
                                 <AuthSystemAdmin>
