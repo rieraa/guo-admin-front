@@ -8,11 +8,12 @@ class UserStore {
     }
     async getUserInfo () {
         const res = await http.get('/user/userinfo')
-        if (res.status === 0) {
+        if (res.code === 0) {
             runInAction(() => {
                 this.userInfo = res.data
             })
         }
+
         return res
     }
 

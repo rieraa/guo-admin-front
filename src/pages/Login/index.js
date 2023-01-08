@@ -4,7 +4,7 @@ import { useStore } from '@/store'
 import { useNavigate } from 'react-router-dom'
 
 function Login () {
-    const { loginStore, userStore } = useStore()
+    const { loginStore } = useStore()
     const navigate = useNavigate()
     const onFinish = async (values) => {
         const res = await loginStore.getToken({
@@ -12,20 +12,22 @@ function Login () {
             password: values.password
         })
         if (res.code === 0) {
+
             // 跳转首页
-            await userStore.getUserInfo()
+            document.cookie = `token=${loginStore.token}`;
+
             // 区分角色变量
             // 0:会员 1：系统管理员 2：课程资料管理员 3 公司领导 4.冻结
-            if (userStore.userInfo.role === "1") {
-                localStorage.setItem("role", `${userStore.userInfo.roleid}`)
+            if (res.data.roleId === 1) {
+                localStorage.setItem("role", `${res.data.roleId}`)
                 navigate('/systemAdmin', { replace: true })
                 message.success("登录成功")
-            } else if (userStore.userInfo.role === "2") {
-                localStorage.setItem("role", `${userStore.userInfo.roleid}`)
+            } else if (res.data.roleId === 2) {
+                localStorage.setItem("role", `${res.data.roleId}`)
                 navigate('/resourceAdmin', { replace: true })
                 message.success("登录成功")
-            } else if (userStore.userInfo.role === "3") {
-                localStorage.setItem("role", `${userStore.userInfo.roleid}`)
+            } else if (res.data.roleId === 3) {
+                localStorage.setItem("role", `${res.data.roleId}`)
                 navigate('/leader"', { replace: true })
                 message.success("登录成功")
             } else message.error('权限不足')
@@ -40,6 +42,7 @@ function Login () {
     return (
         <div className='login'>
             <Card className='login-container'>
+                <p className='login-container-title'>慕课学习系统后台管理</p>
                 <Form
                     onFinish={onFinish}
                     onFinishFailed={onFinishFailed}
@@ -55,7 +58,7 @@ function Login () {
                         },
                         {
                             required: true,
-                            message: '手机号不能为空!',
+                            message: '用户名不能为空!',
                         },
                         ]}
                     >

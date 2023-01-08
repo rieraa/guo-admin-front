@@ -14,9 +14,8 @@ class LoginStore {
             username,
             password
         })
-        console.log(res)
-        this.token = res.token
-        setToken(res.token)
+        this.token = res.data.token
+        setToken(res.data.token)
         return res
     }
 
