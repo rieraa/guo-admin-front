@@ -7,7 +7,9 @@ class UserStore {
         makeAutoObservable(this)
     }
     async getUserInfo () {
-        const res = await http.get('/user/userinfo')
+        const res = await http.get('/user/userinfo', {
+            withCredentials: true
+        })
         if (res.code === 0) {
             runInAction(() => {
                 this.userInfo = res.data

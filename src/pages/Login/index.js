@@ -2,7 +2,7 @@ import { Card, Button, Form, Input, message } from 'antd'
 import './index.scss'
 import { useStore } from '@/store'
 import { useNavigate } from 'react-router-dom'
-
+import cookie from 'react-cookies'
 function Login () {
     const { loginStore } = useStore()
     const navigate = useNavigate()
@@ -14,7 +14,7 @@ function Login () {
         if (res.code === 0) {
 
             // 跳转首页
-            document.cookie = `token=${loginStore.token}`;
+            cookie.save("token", loginStore.token)
 
             // 区分角色变量
             // 0:会员 1：系统管理员 2：课程资料管理员 3 公司领导 4.冻结
