@@ -1,17 +1,13 @@
-import { Routes, Route } from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 import LayoutPc from '@/pages/Layout'
 import Login from '@/pages/Login'
-import { AuthRoute, AuthSystemAdmin, AuthResourceAdmin, AuthLeader } from './components/Auth'
+import {AuthLeader, AuthResourceAdmin, AuthRoute, AuthSystemAdmin} from './components/Auth'
 import LeaderrHome from './pages/LeaderHome'
-import Publish from './pages/StudentHomework'
-import StudentHome from './pages/StudentHome'
 import CourseList from './pages/CourseList'
-import {HistoryRouter, history} from './utils/history'
+import {history, HistoryRouter} from './utils/history'
 // antd国际化 中文
-import { ConfigProvider } from 'antd'
+import {ConfigProvider} from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
-import StudentInfo from './pages/StudentInfo'
-import Rejister from './pages/Register'
 import TeacherClass from './pages/TeacherClass'
 import TeacherQuestion from './pages/TeacherQuestion'
 import TeacherDetailList from './pages/TeacherDetailList'
@@ -19,10 +15,10 @@ import TeacherReview from './pages/TeacherReview'
 import TeacherClassInfo from './pages/TeacherClassInfo'
 import CommentManage from './pages/CommentManage'
 import UserManage from './pages/UserManage'
+import ChapterList from "@/pages/ChapterList";
 
 
-
-function App () {
+function App() {
     return (
         //路由配置
         <HistoryRouter history={history}>
@@ -33,19 +29,19 @@ function App () {
                         {/* 需要鉴权的路由 */}
                         <Route path='/' element={
                             <AuthRoute>
-                                <LayoutPc />
+                                <LayoutPc/>
                             </AuthRoute>
                         }>
                             <Route path="resourceAdmin" element={
                                 <AuthResourceAdmin>
                                     <CourseList></CourseList>
                                 </AuthResourceAdmin>
-                            } />
-                            <Route path="publish/:id" element={
+                            }/>
+                            <Route path="resourceAdmin/chapter" element={
                                 <AuthResourceAdmin>
-                                    <Publish />
+                                    <ChapterList/>
                                 </AuthResourceAdmin>
-                            } />
+                            }/>
                             <Route path="commentManage" element={
                                 <AuthResourceAdmin>
                                     <CommentManage></CommentManage>
@@ -56,25 +52,25 @@ function App () {
                                 <AuthResourceAdmin>
                                     <UserManage></UserManage>
                                 </AuthResourceAdmin>
-                            } />
+                            }/>
                             <Route path="leader" element={
                                 <AuthLeader>
-                                    <LeaderrHome />
+                                    <LeaderrHome/>
                                 </AuthLeader>
-                            } />
+                            }/>
                             <Route path="teacher/list" element={
                                 <AuthSystemAdmin>
                                     <CourseList/>
                                 </AuthSystemAdmin>
-                            } />
+                            }/>
                             <Route path="teacher/list/search" element={
                                 <AuthSystemAdmin>
-                                    <TeacherDetailList />
+                                    <TeacherDetailList/>
                                 </AuthSystemAdmin>
                             }></Route>
                             <Route path="teacher/list/search/review" element={
                                 <AuthSystemAdmin>
-                                    <TeacherReview />
+                                    <TeacherReview/>
                                 </AuthSystemAdmin>
                             }></Route>
                             <Route path='teacher/class' element={
@@ -85,18 +81,18 @@ function App () {
                             </Route>
                             <Route path='teacher/question' element={
                                 <AuthSystemAdmin>
-                                    <TeacherQuestion />
+                                    <TeacherQuestion/>
                                 </AuthSystemAdmin>
                             }
                             ></Route>
                             <Route path="teacher/class/classinfo" element={
                                 <AuthSystemAdmin>
-                                    <TeacherClassInfo />
+                                    <TeacherClassInfo/>
                                 </AuthSystemAdmin>
-                            } />
+                            }/>
                         </Route>
 
-                        <Route path='/login' element={<Login />} />
+                        <Route path='/login' element={<Login/>}/>
                     </Routes>
                 </div>
             </ConfigProvider>

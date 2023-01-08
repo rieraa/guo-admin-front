@@ -13,7 +13,7 @@ import {
     Form,
     Row,
     Col,
-    Input
+    Input, Divider
 } from 'antd'
 import {Link, useNavigate} from 'react-router-dom'
 import {useStore} from '@/store'
@@ -56,8 +56,6 @@ const CourseList = () => {
             message.error('修改失败')
         }
     }
-
-
 
 
     // 加载
@@ -119,25 +117,24 @@ const CourseList = () => {
                     <Space size="middle">
                         <Button type='text' size='small' shape="round"
                                 onClick={() => {
-                                    navigate(`/teacher/list/search?class=${siftstate.class}&question=${data.pid}`, {
-                                        state: {
-                                            className: siftstate.className,
-                                            pbName: data.pbName
-                                        }
-                                    })
+                                    navigate(`/resourceAdmin/chapter/?id=${data.courseId}`
+                                    )
                                 }}>查看</Button>
 
                         <Popconfirm
                             title="确定删除？"
                             onConfirm={async () => {
                                 const res = await http.delete('/delete/course', {
-                                    courseId: data.courseId,
+                                    data: {
+                                        courseId: data.courseId,
+                                    }
+
                                 })
                                 if (res.code === "0") {
-                                    message.success("取消成功")
+                                    message.success("删除成功")
                                 } else (
 
-                                    message.error("取消失败，" + res.message)
+                                    message.error("删除失败，" + res.message)
                                 )
                                 console.log(data.courseId)
                             }}
@@ -199,57 +196,19 @@ const CourseList = () => {
 
 
     return <div className='main'>
-        <Card
-            title={
-                <Breadcrumb separator=">">
-                    <Breadcrumb.Item>
-                        <Link to="/resourceAdmin">首页</Link>
-                    </Breadcrumb.Item>
-                </Breadcrumb>}
-        >
-
-
-            {/*<Select*/}
-            {/*    style={{*/}
-            {/*        width: 120,*/}
-            {/*        marginRight: '25px'*/}
-            {/*    }}*/}
-            {/*    value={siftstate.class}*/}
-            {/*    // onChange={(value) => {*/}
-            {/*    //     const cname = classStore.getCnameById(value)*/}
-            {/*    //     setSiftState({ ...siftstate, class: value, className: cname })*/}
-            {/*    // }}*/}
-            {/*    options={list}*/}
-            {/*/>*/}
-            {/*<Select*/}
-            {/*    style={{*/}
-            {/*        width: 120,*/}
-            {/*        marginRight: '25px'*/}
-            {/*    }}*/}
-            {/*    placeholder="Please select an owner"*/}
-            {/*    defaultValue={courseListStore.courseInfo.courseType}*/}
-            {/*    fieldNames={{*/}
-            {/*        label: 'typeName',*/}
-            {/*        value: 'typeId',*/}
-            {/*    }}*/}
-            {/*    options={courseListStore.typeList}*/}
-            {/*    onChange={value => {*/}
-            {/*        courseListStore.courseInfo.courseType = value*/}
-            {/*    }}*/}
-            {/*>*/}
-
-            {/*</Select>*/}
-            {/*<Radio.Group onChange={(e) => {*/}
-            {/*    setSiftState({ ...siftstate, isDemand: e.target.value })*/}
-            {/*}} value={siftstate.isDemand}>*/}
-            {/*    <Radio value={'0'}>全部</Radio>*/}
-            {/*    <Radio value={'1'}>必做</Radio>*/}
-            {/*    <Radio value={'2'}>选做</Radio>*/}
-            {/*</Radio.Group>*/}
-        </Card>
-        <Card title={`目前共有 ${courseListStore.total} 个课程：`}
+        <Card title={
+            <Breadcrumb separator=">">
+                <Breadcrumb.Item>
+                    <Link to="/resourceAdmin">首页</Link>
+                </Breadcrumb.Item>
+            </Breadcrumb>}
               style={{height: '100%'}}
         >
+            <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center',}}>
+                <p>{`目前共有 ${courseListStore.total} 个课程`}</p>
+                <Divider/>
+            </div>
+
             <Table
                 rowKey="courseId"
                 columns={columns}
