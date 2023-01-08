@@ -5,8 +5,8 @@ import { AuthRoute, AuthSystemAdmin, AuthResourceAdmin } from './components/Auth
 import TeacherHome from './pages/TeacherHome'
 import Publish from './pages/StudentHomework'
 import StudentHome from './pages/StudentHome'
-import TeacherList from './pages/TeacherList'
-import { HistoryRouter, history } from './utils/history'
+import CourseList from './pages/CourseList'
+import {HistoryRouter, history} from './utils/history'
 // antd国际化 中文
 import { ConfigProvider } from 'antd'
 import zhCN from 'antd/es/locale/zh_CN'
@@ -37,7 +37,7 @@ function App () {
                         }>
                             <Route path="resourceAdmin" element={
                                 <AuthResourceAdmin>
-                                    <TeacherList></TeacherList>
+                                    <CourseList></CourseList>
                                 </AuthResourceAdmin>
                             } />
                             <Route path="publish/:id" element={
@@ -63,7 +63,7 @@ function App () {
                             } />
                             <Route path="teacher/list" element={
                                 <AuthSystemAdmin>
-                                    <TeacherList />
+                                    <CourseList/>
                                 </AuthSystemAdmin>
                             } />
                             <Route path="teacher/list/search" element={

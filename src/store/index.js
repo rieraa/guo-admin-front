@@ -4,6 +4,7 @@ import UserStore from './user.Store'
 import RegisterStore from './register.Store'
 import ClassStore from './class.Store'
 import ClassStudentsStore from './classStudents.Store'
+import courseListStore from './courseList.Store'
 class RootStore {
     constructor() {
         this.loginStore = new LoginStore()
@@ -11,6 +12,8 @@ class RootStore {
         this.registerStore = new RegisterStore()
         this.classStore = new ClassStore()
         this.classStudentsStore = new ClassStudentsStore()
+        //课程列表导入
+        this.courseListStore = courseListStore
     }
 }
 

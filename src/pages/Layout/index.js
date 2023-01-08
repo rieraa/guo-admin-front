@@ -118,7 +118,7 @@ const LayoutPc = () => {
             </Header>
             <Layout>
                 <Sider width={200} className="site-layout-background">
-                    <Item roleId={'1'}></Item>
+                    <Item roleId={'2'}></Item>
                 </Sider>
                 <Layout className="layout-content" style={{ padding: 20 }}>
                     {/*嵌套路由*/}
